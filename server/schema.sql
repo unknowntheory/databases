@@ -7,15 +7,15 @@ USE chat;
 
 CREATE TABLE users (
   
-  id int NOT NULL AUTO_INCREMENT,
-  username varchar(255) NOT NULL,
+  id int NOT NULL AUTO_INCREMENT UNIQUE,
+  username varchar(255) NOT NULL UNIQUE,
   PRIMARY KEY (id)
   
 );
 
 CREATE TABLE messages (
  
-  id int NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT UNIQUE,
   userId int NOT NULL,
   message varchar(255) NOT NULL,
   roomname varchar(255) NOT NULL,

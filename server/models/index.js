@@ -11,8 +11,7 @@ module.exports = {
     //   } // a function which can be used to insert a message into the database
     // },
     post: function (params, callback) {
-      var queryStr = 'INSERT INTO messages (userid, message, roomname) VALUES(?,?,?)'; // ????????;
-      console.log('this is a messages model post, here are the values to post ', values);
+      
       // use username to get userId ??
       // get name from params
       // check if name exists in db
@@ -20,8 +19,36 @@ module.exports = {
       //     add name to db (post it)
       // if name does exist
       //  ----how do we check if name exists in database?---
-      //   change params name to id
       
+      
+      var name = params[0];
+      var getIdQuery = 'select id from users where username(?)';
+      
+      db.dbConnection.query(getIdQuery, [name], (err, result) => {
+        console.log('..............................this is the message post getQueryId result ', result);
+        if (result === undefined) {
+          console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>> UNDEFINED', result);        
+          // if name does not exist
+          // add it to the username to the users list
+          module.exports.users.post(name, (err, resp)=>{
+            if (err) {
+              console.log(err);
+            } else {
+              console.log('works');
+            }
+          });             
+        } else {
+          // if name does exist
+          // change params name to query result id
+          
+          console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>> ELSE', result);
+          params[0] = result;  
+        }
+      });
+      
+      
+      var queryStr = 'INSERT INTO messages (userid, message, roomname) VALUES(?,?,?)'; // ????????;
+      //console.log('this is a messages model post, here are the values to post ', values);
       
       db.dbConnection.query(queryStr, params, (err, results)=> {
         if (err) {
