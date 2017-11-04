@@ -1,4 +1,5 @@
 var models = require('../models');
+// handle requests
 
 module.exports = {
   messages: {
@@ -9,7 +10,14 @@ module.exports = {
   users: {
     // Ditto as above
     get: function (req, res) {},
-    post: function (req, res) {}
+    post: function (req, res) {
+     // get username
+     // pass it to models.users.post
+     // if err console log err
+     // else send status code 201
+     // res.sendStatus(201); 
+      
+    }
   }
 };
-
+  
