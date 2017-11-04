@@ -11,12 +11,19 @@ module.exports = {
     // Ditto as above
     get: function (req, res) {},
     post: function (req, res) {
-     // get username
-     // pass it to models.users.post
-     // if err console log err
-     // else send status code 201
-     // res.sendStatus(201); 
-      
+      //req.username;
+      if (err) {
+        console.log('ERROR');
+      } else {
+        models.users.post(req.username);
+        res.statusCode(201);
+      }
+    //console.log(req,'------<>');
+    // get username
+    // pass it to models.users.post
+    // if err console log err
+    // else send status code 201
+    // res.sendStatus(201);     
     }
   }
 };

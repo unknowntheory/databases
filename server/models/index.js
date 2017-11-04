@@ -16,8 +16,8 @@ module.exports = {
     
      
     },
-    post: function (username, callback) {
-      var queryStr;
+    post: function (userName, callback) {
+      var queryStr = `INSERT INTO users (username) VALUES ${userName}`; 
       db.dbConnection.query(queryStr, username, (err, results)=>{
         if (err) {
           callback(err, null);
