@@ -1,12 +1,25 @@
+DROP DATABASE chat;
 CREATE DATABASE chat;
 
 USE chat;
 
 CREATE TABLE messages (
-  /* Describe your table here.*/
+ 
+  id int NOT NULL AUTO_INCREMENT,
+  userId int NOT NULL,
+  message varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+ 
 );
 
 /* Create other tables and define schemas for them here! */
+CREATE TABLE users (
+  
+  id int NOT NULL AUTO_INCREMENT,
+  userName varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+  
+);
 
 
 
